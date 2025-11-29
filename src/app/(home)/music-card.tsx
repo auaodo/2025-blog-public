@@ -89,7 +89,7 @@ export default function MusicCard() {
 			height={styles.height}
 			x={center.x + CARD_SPACING + hiCardStyles.width / 2 - styles.offset}
 			y={center.y - clockCardStyles.offset + CARD_SPACING + calendarCardStyles.height + CARD_SPACING}
-			className='flex items-center gap-3'>
+			className='flex items-center gap-3 max-sm:static'>
 			<MusicSVG className='h-8 w-8' />
 
 			<div className='flex-1 overflow-hidden'>

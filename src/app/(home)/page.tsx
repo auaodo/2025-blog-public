@@ -21,7 +21,7 @@ export default function Home() {
 			<HiCard />
 			{!maxSM && <ClockCard />}
 			{!maxSM && <CalendarCard />}
-			{!maxSM && <MusicCard />}
+			<MusicCard />
 			<SocialButtons />
 			{!maxSM && <ShareCard />}
 			<AritcleCard />
