@@ -17,7 +17,7 @@ export const styles = {
 }
 
 const MUSIC_LIST = [
-	{ name: '随机音乐', url: 'https://cr.aodo.me/home?path=cloudreve%3A%2F%2F7zsx%40share' }
+	{ name: '五月天歌曲音乐合集', url: 'https://www.bilibili.com/video/BV11jkvB2EhV/?share_source=copy_web&vd_source=799aba6612c00724aae38ca3d6b7ce44' }
 ]
 
 export default function MusicCard() {
