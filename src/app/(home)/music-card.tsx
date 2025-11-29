@@ -17,9 +17,7 @@ export const styles = {
 }
 
 const MUSIC_LIST = [
-	{ name: 'Reflections', url: 'https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3' },
-	{ name: 'Lofi Study', url: 'https://cdn.pixabay.com/download/audio/2022/05/16/audio_db65dadf58.mp3' },
-	{ name: 'Chill Vibes', url: 'https://cdn.pixabay.com/download/audio/2022/02/22/audio_d1718ab41b.mp3' }
+	{ name: '随机音乐', url: 'https://i.y.qq.com/n2/m/share/details/taoge.html?platform=11&appshare=android_qq&appversion=14110008&hosteuin=oKCA7KoFoKSzNn**&id=3164032680&ADTAG=wxfshare' }
 ]
 
 export default function MusicCard() {
