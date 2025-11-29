@@ -18,6 +18,7 @@ export const styles = {
 }
 
 const MUSIC_LIST = [
+	{ title: "五月天 - 拥抱(1)", url: "https://rust.aodo.me/rustfs/console/browser/music/五月天 - 拥抱(1).mp3" },
 	{ name: '五月天拥抱', url: '/music/五月天拥抱.mp3' },
 	{ name: '上海彩虹室内合唱团 - 彩虹', url: '/music/上海彩虹室内合唱团 - 彩虹.mp3' },
     { name: '房东的猫 - 云烟成雨', url: '/music/房东的猫 - 云烟成雨.mp3' },
