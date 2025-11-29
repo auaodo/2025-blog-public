@@ -7,7 +7,7 @@ import { styles as calendarCardStyles } from './calendar-card'
 
 export const styles = {
 	width: 293,
-	height: 180, // Increased height for video player
+	height: 140, // Reduced height as requested
 	offset: 120,
 	order: 6
 }
@@ -25,12 +25,12 @@ export default function MusicCard() {
 			className='overflow-hidden p-0'>
 			<iframe
 				src="//player.bilibili.com/player.html?bvid=BV11jkvB2EhV&page=1&high_quality=1&danmaku=0"
-				allow="fullscreen"
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
 				width="100%"
 				height="100%"
 				scrolling="no"
 				frameBorder="0"
-				sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"
+				sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts allow-popups allow-presentation"
 			/>
 		</Card>
 	)
