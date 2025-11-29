@@ -6,6 +6,7 @@ import { styles as clockCardStyles } from './clock-card'
 import { styles as calendarCardStyles } from './calendar-card'
 import MusicSVG from '@/svgs/music.svg'
 import PlaySVG from '@/svgs/play.svg'
+import PauseSVG from '@/svgs/pause.svg'
 import NextSVG from '@/svgs/next.svg'
 import { useRef, useState, useEffect } from 'react'
 
