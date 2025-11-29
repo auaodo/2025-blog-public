@@ -18,9 +18,9 @@ export const styles = {
 }
 
 const MUSIC_LIST = [
-	{ name: 'Daniel Powter - Free Loop', url: '/music/Daniel Powter - Free Loop.mp3' },
-	{ name: '上海彩虹室内合唱团 - 彩虹', url: '/music/上海彩虹室内合唱团 - 彩虹.mp3' },
 	{ name: '五月天拥抱', url: '/music/五月天拥抱.mp3' },
+	{ name: '上海彩虹室内合唱团 - 彩虹', url: '/music/上海彩虹室内合唱团 - 彩虹.mp3' },
+    { name: '房东的猫 - 云烟成雨', url: '/music/房东的猫 - 云烟成雨.mp3' },
 	{ name: '以冬 - 我的一个道姑朋友', url: '/music/以冬 - 我的一个道姑朋友.mp3' },
 	{ name: '六哲 _ 贺敬轩 - 让全世界知道我爱你', url: '/music/六哲 _ 贺敬轩 - 让全世界知道我爱你.mp3' },
 	{ name: '双笙 (陈元汐) - 长安忆', url: '/music/双笙 (陈元汐) - 长安忆.mp3' },
@@ -31,7 +31,7 @@ const MUSIC_LIST = [
 	{ name: '孙燕姿 - 我怀念的', url: '/music/孙燕姿 - 我怀念的.mp3' },
 	{ name: '张泽熙 - 那个女孩', url: '/music/张泽熙 - 那个女孩.mp3' },
 	{ name: '张紫豪 - 可不可以', url: '/music/张紫豪 - 可不可以.mp3' },
-	{ name: '房东的猫 - 云烟成雨', url: '/music/房东的猫 - 云烟成雨.mp3' },
+	{ name: 'Daniel Powter - Free Loop', url: '/music/Daniel Powter - Free Loop.mp3' },	
 	{ name: '李宇春 - 1987我不知会遇见你', url: '/music/李宇春 - 1987我不知会遇见你.mp3' },
 	{ name: '林俊杰 - Too Bad', url: '/music/林俊杰 - Too Bad.flac' },
 	{ name: '林俊杰 - 弹唱', url: '/music/林俊杰 - 弹唱.flac' },
