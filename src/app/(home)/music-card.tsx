@@ -6,7 +6,7 @@ import { styles as clockCardStyles } from './clock-card'
 import { styles as calendarCardStyles } from './calendar-card'
 import MusicSVG from '@/svgs/music.svg'
 import PlaySVG from '@/svgs/play.svg'
-import PauseSVG from '@/svgs/pause.svg'
+import NextSVG from '@/svgs/next.svg'
 import { useRef, useState, useEffect } from 'react'
 
 export const styles = {
@@ -81,11 +81,18 @@ export default function MusicCard() {
 				</div>
 			</div>
 
-			<button
-				onClick={togglePlay}
-				className='flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white hover:scale-105 transition-transform active:scale-95'>
-				{isPlaying ? <PauseSVG className='text-brand ml-0.5 h-4 w-4' /> : <PlaySVG className='text-brand ml-1 h-4 w-4' />}
-			</button>
+			<div className='flex items-center gap-2'>
+				<button
+					onClick={togglePlay}
+					className='flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white hover:scale-105 transition-transform active:scale-95'>
+					{isPlaying ? <PauseSVG className='text-brand ml-0.5 h-4 w-4' /> : <PlaySVG className='text-brand ml-1 h-4 w-4' />}
+				</button>
+				<button
+					onClick={handleNext}
+					className='flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/80 hover:scale-105 transition-transform active:scale-95'>
+					<NextSVG className='text-brand h-4 w-4' />
+				</button>
+			</div>
 		</Card>
 	)
 }
