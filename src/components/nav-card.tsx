@@ -133,7 +133,7 @@ export default function NavCard() {
 				<Link className='flex items-center gap-3' href='/'>
 					<Image src='/images/avatar.png' alt='avatar' width={40} height={40} style={{ boxShadow: ' 0 12px 20px -5px #E2D9CE' }} className='rounded-full' />
 					{form === 'full' && <span className='font-averia mt-1 text-2xl leading-none font-medium'>{siteContent.meta.title}</span>}
-					{form === 'full' && <span className='text-brand mt-2 text-xs font-medium'>(开发中)</span>}
+					{form === 'full' && <span className='text-brand mt-2 text-xs font-medium'>Fly</span>}
 				</Link>
 
 				{(form === 'full' || form === 'icons') && (
@@ -148,11 +148,11 @@ export default function NavCard() {
 								animate={
 									form === 'icons'
 										? {
-												left: hoveredIndex * (itemHeight + 24) - extraSize,
-												top: -extraSize,
-												width: itemHeight + extraSize * 2,
-												height: itemHeight + extraSize * 2
-											}
+											left: hoveredIndex * (itemHeight + 24) - extraSize,
+											top: -extraSize,
+											width: itemHeight + extraSize * 2,
+											height: itemHeight + extraSize * 2
+										}
 										: { top: hoveredIndex * (itemHeight + 8), left: 0, width: '100%', height: itemHeight }
 								}
 								transition={{

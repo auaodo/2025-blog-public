@@ -21,8 +21,10 @@ export default function ArtCard() {
 			width={styles.width}
 			height={styles.height}
 			x={center.x}
-			y={center.y - hiCardStyles.height / 2 - styles.height / 2 - CARD_SPACING}>
-			<img onClick={() => router.push('/pictures')} src='/images/art/cat.png' alt='wall art' className='h-full w-full rounded-[32px] object-cover' />
+			y={center.y - hiCardStyles.height / 2 - styles.height / 2 - CARD_SPACING}
+			href='https://key.afilmory.art/'
+			target='_blank'>
+			<img src='/images/art/cat.png' alt='wall art' className='h-full w-full rounded-[32px] object-cover' />
 		</Card>
 	)
 }

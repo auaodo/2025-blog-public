@@ -2,12 +2,12 @@ import { useCenterStore } from '@/hooks/use-center'
 import GithubSVG from '@/svgs/github.svg'
 import { ANIMATION_DELAY, CARD_SPACING } from '@/consts'
 import { styles as hiCardStyles } from './hi-card'
-import JuejinSVG from '@/svgs/juejin.svg'
 import EmailSVG from '@/svgs/email.svg'
 import { motion } from 'motion/react'
 import { useEffect, useState } from 'react'
 import { toast } from 'sonner'
 import { useSize } from '@/hooks/use-size'
+import { SparklesIcon } from 'lucide-react'
 
 export const styles = {
 	width: 315,
@@ -64,14 +64,14 @@ export default function SocialButtons() {
 							whileHover={{ scale: 1.05 }}
 							whileTap={{ scale: 0.95 }}
 							className='card relative flex items-center gap-2 rounded-xl px-3 py-2.5 font-medium whitespace-nowrap'>
-							<JuejinSVG className='h-6 w-6' />
+							<SparklesIcon className='text-brand h-6 w-6' />
 							微光
 						</motion.a>
 					)}
 
 					<motion.button
 						onClick={() => {
-							navigator.clipboard.writeText('yysuni1001@gmail.com').then(() => {
+							navigator.clipboard.writeText('auaodo@gmail.com').then(() => {
 								toast.success('邮箱已复制到剪贴板')
 							})
 						}}

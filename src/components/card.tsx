@@ -14,9 +14,11 @@ interface Props {
 	x: number
 	y: number
 	children: React.ReactNode
+	href?: string
+	target?: string
 }
 
-export default function Card({ children, order, width, height, x, y, className }: Props) {
+export default function Card({ children, order, width, height, x, y, className, href, target }: Props) {
 	const { maxSM, init } = useSize()
 	let [show, setShow] = useState(false)
 	if (maxSM && init) order = 0
@@ -32,7 +34,22 @@ export default function Card({ children, order, width, height, x, y, className }
 		)
 	}, [x, y, show])
 
-	if (show)
+	if (show) {
+		if (href) {
+			return (
+				<motion.a
+					href={href}
+					target={target}
+					className={cn('card block', className)}
+					initial={{ opacity: 0, scale: 0.6, left: x, top: y, width, height }}
+					animate={{ opacity: 1, scale: 1, left: x, top: y, width, height }}
+					whileHover={{ scale: 1.05 }}
+					whileTap={{ scale: 0.95 }}>
+					{children}
+				</motion.a>
+			)
+		}
+
 		return (
 			<motion.div
 				className={cn('card', className)}
@@ -43,6 +60,7 @@ export default function Card({ children, order, width, height, x, y, className }
 				{children}
 			</motion.div>
 		)
+	}
 
 	return null
 }

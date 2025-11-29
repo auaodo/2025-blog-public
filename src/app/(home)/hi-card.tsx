@@ -32,6 +32,8 @@ export default function HiCard() {
 			height={styles.height}
 			x={center.x}
 			y={center.y}
+			href='https://xydh.fun/flyfire'
+			target='_blank'
 			className='-translate-1/2 text-center max-sm:static max-sm:translate-0'>
 			<img src='/images/avatar.png' className='mx-auto rounded-full' style={{ width: 120, height: 120, boxShadow: ' 0 16px 32px -5px #E2D9CE' }} />
 			<h1 className='font-averia mt-3 text-2xl'>
