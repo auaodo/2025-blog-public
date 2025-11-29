@@ -7,7 +7,7 @@ import { styles as calendarCardStyles } from './calendar-card'
 
 export const styles = {
 	width: 293,
-	height: 140, // Reduced height as requested
+	height: 140,
 	offset: 120,
 	order: 6
 }
@@ -30,7 +30,7 @@ export default function MusicCard() {
 				height="100%"
 				scrolling="no"
 				frameBorder="0"
-				sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts allow-popups allow-presentation"
+				sandbox="allow-scripts allow-same-origin allow-forms allow-presentation"
 			/>
 		</Card>
 	)
