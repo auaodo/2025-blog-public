@@ -4,68 +4,16 @@ import { styles as hiCardStyles } from './hi-card'
 import { CARD_SPACING } from '@/consts'
 import { styles as clockCardStyles } from './clock-card'
 import { styles as calendarCardStyles } from './calendar-card'
-import MusicSVG from '@/svgs/music.svg'
-import PlaySVG from '@/svgs/play.svg'
-import PauseSVG from '@/svgs/pause.svg'
-import { useRef, useState, useEffect } from 'react'
 
 export const styles = {
 	width: 293,
-	height: 66,
+	height: 180, // Increased height for video player
 	offset: 120,
 	order: 6
 }
 
-const MUSIC_LIST = [
-	{ name: '五月天歌曲音乐合集', url: 'https://www.bilibili.com/video/BV11jkvB2EhV/?share_source=copy_web&vd_source=799aba6612c00724aae38ca3d6b7ce44' }
-]
-
 export default function MusicCard() {
 	const center = useCenterStore()
-	const [isPlaying, setIsPlaying] = useState(false)
-	const [currentMusic, setCurrentMusic] = useState(MUSIC_LIST[0])
-	const audioRef = useRef<HTMLAudioElement | null>(null)
-
-	useEffect(() => {
-		// Initialize audio with the first track but don't play yet
-		audioRef.current = new Audio(currentMusic.url)
-		audioRef.current.addEventListener('ended', handleNext)
-		return () => {
-			audioRef.current?.pause()
-			audioRef.current?.removeEventListener('ended', handleNext)
-		}
-	}, [])
-
-	const handleNext = () => {
-		// Randomly select a next song, avoiding the current one if possible
-		let nextIndex = Math.floor(Math.random() * MUSIC_LIST.length)
-		if (MUSIC_LIST.length > 1) {
-			while (MUSIC_LIST[nextIndex].url === currentMusic.url) {
-				nextIndex = Math.floor(Math.random() * MUSIC_LIST.length)
-			}
-		}
-		const nextMusic = MUSIC_LIST[nextIndex]
-
-		if (audioRef.current) {
-			audioRef.current.src = nextMusic.url
-			setCurrentMusic(nextMusic)
-			if (isPlaying) audioRef.current.play()
-		}
-	}
-
-	const togglePlay = () => {
-		if (!audioRef.current) return
-
-		if (isPlaying) {
-			audioRef.current.pause()
-		} else {
-			// If it's the very first play, we might want to start with a random song too, 
-			// or just stick to the default first one. Let's stick to current for simplicity/predictability
-			// unless user specifically wants "click play -> random song immediately"
-			audioRef.current.play()
-		}
-		setIsPlaying(!isPlaying)
-	}
 
 	return (
 		<Card
@@ -74,22 +22,16 @@ export default function MusicCard() {
 			height={styles.height}
 			x={center.x + CARD_SPACING + hiCardStyles.width / 2 - styles.offset}
 			y={center.y - clockCardStyles.offset + CARD_SPACING + calendarCardStyles.height + CARD_SPACING}
-			className='flex items-center gap-3'>
-			<MusicSVG className='h-8 w-8' />
-
-			<div className='flex-1 overflow-hidden'>
-				<div className='text-secondary text-sm truncate'>{currentMusic.name}</div>
-
-				<div className='mt-1 h-2 rounded-full bg-white/60 overflow-hidden'>
-					<div className={`bg-linear h-full rounded-full ${isPlaying ? 'w-full animate-pulse' : 'w-1/2'}`} />
-				</div>
-			</div>
-
-			<button
-				onClick={togglePlay}
-				className='flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white hover:scale-105 transition-transform active:scale-95'>
-				{isPlaying ? <PauseSVG className='text-brand ml-0.5 h-4 w-4' /> : <PlaySVG className='text-brand ml-1 h-4 w-4' />}
-			</button>
+			className='overflow-hidden p-0'>
+			<iframe
+				src="//player.bilibili.com/player.html?bvid=BV11jkvB2EhV&page=1&high_quality=1&danmaku=0"
+				allow="fullscreen"
+				width="100%"
+				height="100%"
+				scrolling="no"
+				frameBorder="0"
+				sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"
+			/>
 		</Card>
 	)
 }
