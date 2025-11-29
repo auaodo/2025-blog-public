@@ -17,7 +17,7 @@ export const styles = {
 }
 
 const MUSIC_LIST = [
-	{ name: 'Reflections', url: '/music/reflections.mp3' }
+	{ name: '拥抱 - 五月天', url: '/music/五月天拥抱.mp3' }
 ]
 
 export default function MusicCard() {
