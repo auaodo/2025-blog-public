@@ -1,7 +1,7 @@
 'use client'
 import { PropsWithChildren, useEffect } from 'react'
 import { useCenterInit } from '@/hooks/use-center'
-import BlurredBubblesBackground from './backgrounds/blurred-bubbles'
+import BingParticlesBackground from './backgrounds/bing-particles'
 import NavCard from '@/components/nav-card'
 import { Toaster } from 'sonner'
 import { CircleCheckIcon, InfoIcon, Loader2Icon, OctagonXIcon, TriangleAlertIcon } from 'lucide-react'
@@ -43,7 +43,7 @@ export default function Layout({ children }: PropsWithChildren) {
 					} as React.CSSProperties
 				}
 			/>
-			<BlurredBubblesBackground colors={siteContent.backgroundColors} regenerateKey={regenerateKey} />
+			<BingParticlesBackground />
 			<main className='relative z-10 h-full'>
 				{children}
 				<NavCard />
