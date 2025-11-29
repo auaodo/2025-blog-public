@@ -17,7 +17,7 @@ export const styles = {
 }
 
 const MUSIC_LIST = [
-	{ name: '随机音乐', url: 'https://i.y.qq.com/n2/m/share/details/taoge.html?platform=11&appshare=android_qq&appversion=14110008&hosteuin=oKCA7KoFoKSzNn**&id=3164032680&ADTAG=wxfshare' }
+	{ name: '随机音乐', url: 'https://cr.aodo.me/s/Zwta' }
 ]
 
 export default function MusicCard() {
@@ -27,6 +27,7 @@ export default function MusicCard() {
 	const audioRef = useRef<HTMLAudioElement | null>(null)
 
 	useEffect(() => {
+		// Initialize audio with the first track but don't play yet
 		audioRef.current = new Audio(currentMusic.url)
 		audioRef.current.addEventListener('ended', handleNext)
 		return () => {
@@ -36,8 +37,13 @@ export default function MusicCard() {
 	}, [])
 
 	const handleNext = () => {
-		const currentIndex = MUSIC_LIST.findIndex(m => m.url === currentMusic.url)
-		const nextIndex = (currentIndex + 1) % MUSIC_LIST.length
+		// Randomly select a next song, avoiding the current one if possible
+		let nextIndex = Math.floor(Math.random() * MUSIC_LIST.length)
+		if (MUSIC_LIST.length > 1) {
+			while (MUSIC_LIST[nextIndex].url === currentMusic.url) {
+				nextIndex = Math.floor(Math.random() * MUSIC_LIST.length)
+			}
+		}
 		const nextMusic = MUSIC_LIST[nextIndex]
 
 		if (audioRef.current) {
@@ -53,6 +59,9 @@ export default function MusicCard() {
 		if (isPlaying) {
 			audioRef.current.pause()
 		} else {
+			// If it's the very first play, we might want to start with a random song too, 
+			// or just stick to the default first one. Let's stick to current for simplicity/predictability
+			// unless user specifically wants "click play -> random song immediately"
 			audioRef.current.play()
 		}
 		setIsPlaying(!isPlaying)
