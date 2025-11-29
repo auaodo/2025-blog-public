@@ -17,7 +17,7 @@ export const styles = {
 }
 
 const MUSIC_LIST = [
-	{ name: '随机音乐', url: 'https://cr.aodo.me/s/Zwta' }
+	{ name: '随机音乐', url: 'https://cr.aodo.me/home?path=cloudreve%3A%2F%2F7zsx%40share' }
 ]
 
 export default function MusicCard() {
