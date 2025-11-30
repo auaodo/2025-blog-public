@@ -9,36 +9,34 @@ import { toast } from 'sonner'
 import { useSize } from '@/hooks/use-size'
 import { SparklesIcon } from 'lucide-react'
 
-export const styles = {
-	width: 315,
-	height: 48,
-	order: 6
-}
-
 let delay = 100
 
 export default function SocialButtons() {
 	const center = useCenterStore()
+	const { cardStyles } = useConfigStore()
 	const { maxSM, init } = useSize()
+	const styles = cardStyles.socialButtons
+	const hiCardStyles = cardStyles.hiCard
+	let order = styles.order
 	if (maxSM && init) {
-		styles.order = 0
+		order = 0
 		delay = 0
 	}
 	const [show, setShow] = useState(false)
 	const [secondaryShow, setSecondaryShow] = useState(false)
 	const [tertiaryShow, setTertiaryShow] = useState(false)
 	useEffect(() => {
-		setTimeout(() => setShow(true), styles.order * ANIMATION_DELAY * 1000)
-		setTimeout(() => setSecondaryShow(true), styles.order * ANIMATION_DELAY * 1000 + 1 * delay)
-		setTimeout(() => setTertiaryShow(true), styles.order * ANIMATION_DELAY * 1000 + 2 * delay)
-	}, [])
+		setTimeout(() => setShow(true), order * ANIMATION_DELAY * 1000)
+		setTimeout(() => setSecondaryShow(true), order * ANIMATION_DELAY * 1000 + 1 * delay)
+		setTimeout(() => setTertiaryShow(true), order * ANIMATION_DELAY * 1000 + 2 * delay)
+	}, [order])
+
+	const x = styles.offsetX !== null ? center.x + styles.offsetX : center.x + hiCardStyles.width / 2
+	const y = styles.offsetY !== null ? center.y + styles.offsetY : center.y + hiCardStyles.height / 2 + CARD_SPACING
 
 	if (show)
 		return (
-			<motion.div
-				className='absolute max-sm:static'
-				animate={{ left: center.x + hiCardStyles.width / 2, top: center.y + hiCardStyles.height / 2 + CARD_SPACING }}
-				initial={{ left: center.x + hiCardStyles.width / 2, top: center.y + hiCardStyles.height / 2 + CARD_SPACING }}>
+			<motion.div className='absolute max-sm:static' animate={{ left: x, top: y }} initial={{ left: x, top: y }}>
 				<div className='absolute top-0 right-0 flex items-center gap-3 max-sm:static'>
 					{tertiaryShow && (
 						<motion.a

@@ -1,11 +1,6 @@
 import { useCenterStore } from '@/hooks/use-center'
 import Card from '@/components/card'
-
-export const styles = {
-	width: 360,
-	height: 288,
-	order: 1
-}
+import { useConfigStore } from './stores/config-store'
 
 function getGreeting() {
 	const hour = new Date().getHours()
@@ -23,7 +18,12 @@ function getGreeting() {
 
 export default function HiCard() {
 	const center = useCenterStore()
+	const { cardStyles } = useConfigStore()
 	const greeting = getGreeting()
+	const styles = cardStyles.hiCard
+
+	const x = styles.offsetX !== null ? center.x + styles.offsetX : center.x
+	const y = styles.offsetY !== null ? center.y + styles.offsetY : center.y
 
 	return (
 		<Card
