@@ -8,17 +8,10 @@ import PauseSVG from '@/svgs/pause.svg'
 import NextSVG from '@/svgs/next.svg'
 import { useRef, useState, useEffect } from 'react'
 
-export const styles = {
-	width: 293,
-	height: 66,
-	offset: 120,
-	order: 6
-}
-
 const MUSIC_LIST = [
 	{ name: '五月天拥抱', url: '/music/五月天拥抱.mp3' },
 	{ name: '上海彩虹室内合唱团 - 彩虹', url: '/music/上海彩虹室内合唱团 - 彩虹.mp3' },
-    { name: '房东的猫 - 云烟成雨', url: '/music/房东的猫 - 云烟成雨.mp3' },
+	{ name: '房东的猫 - 云烟成雨', url: '/music/房东的猫 - 云烟成雨.mp3' },
 	{ name: '以冬 - 我的一个道姑朋友', url: '/music/以冬 - 我的一个道姑朋友.mp3' },
 	{ name: '六哲 _ 贺敬轩 - 让全世界知道我爱你', url: '/music/六哲 _ 贺敬轩 - 让全世界知道我爱你.mp3' },
 	{ name: '双笙 (陈元汐) - 长安忆', url: '/music/双笙 (陈元汐) - 长安忆.mp3' },
@@ -29,7 +22,7 @@ const MUSIC_LIST = [
 	{ name: '孙燕姿 - 我怀念的', url: '/music/孙燕姿 - 我怀念的.mp3' },
 	{ name: '张泽熙 - 那个女孩', url: '/music/张泽熙 - 那个女孩.mp3' },
 	{ name: '张紫豪 - 可不可以', url: '/music/张紫豪 - 可不可以.mp3' },
-	{ name: 'Daniel Powter - Free Loop', url: '/music/Daniel Powter - Free Loop.mp3' },	
+	{ name: 'Daniel Powter - Free Loop', url: '/music/Daniel Powter - Free Loop.mp3' },
 	{ name: '李宇春 - 1987我不知会遇见你', url: '/music/李宇春 - 1987我不知会遇见你.mp3' },
 	{ name: '林俊杰 - Too Bad', url: '/music/林俊杰 - Too Bad.flac' },
 	{ name: '林俊杰 - 弹唱', url: '/music/林俊杰 - 弹唱.flac' },
@@ -39,9 +32,15 @@ const MUSIC_LIST = [
 
 export default function MusicCard() {
 	const center = useCenterStore()
+	const { cardStyles } = useConfigStore()
 	const [isPlaying, setIsPlaying] = useState(false)
 	const [currentMusic, setCurrentMusic] = useState(MUSIC_LIST[0])
 	const audioRef = useRef<HTMLAudioElement | null>(null)
+
+	const styles = cardStyles.musicCard
+	const hiCardStyles = cardStyles.hiCard
+	const clockCardStyles = cardStyles.clockCard
+	const calendarCardStyles = cardStyles.calendarCard
 
 	useEffect(() => {
 		audioRef.current = new Audio(currentMusic.url)
@@ -80,13 +79,16 @@ export default function MusicCard() {
 		setIsPlaying(!isPlaying)
 	}
 
+	const x = styles.offsetX !== null ? center.x + styles.offsetX : center.x + CARD_SPACING + hiCardStyles.width / 2 - styles.offset
+	const y = styles.offsetY !== null ? center.y + styles.offsetY : center.y - clockCardStyles.offset + CARD_SPACING + calendarCardStyles.height + CARD_SPACING
+
 	return (
 		<Card
 			order={styles.order}
 			width={styles.width}
 			height={styles.height}
-			x={center.x + CARD_SPACING + hiCardStyles.width / 2 - styles.offset}
-			y={center.y - clockCardStyles.offset + CARD_SPACING + calendarCardStyles.height + CARD_SPACING}
+			x={x}
+			y={y}
 			className='flex items-center gap-3 max-sm:static'>
 			<MusicSVG className='h-8 w-8' />
 
